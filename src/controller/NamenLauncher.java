@@ -24,12 +24,16 @@ public class NamenLauncher {
         printLijst(mijnExtraLijst, NAAM_EXTRA_NAMEN);
         printLijst(mijnGesorteerdeLijst, NAAM_GESORTEERDE_NAMEN);
 
-        voegNaamToeAanGesoorteerdeLijst("Zacharias", mijnGesorteerdeLijst);
-        voegNaamToeAanGesoorteerdeLijst("Henk", mijnGesorteerdeLijst);
-        voegNaamToeAanGesoorteerdeLijst("Armin", mijnGesorteerdeLijst);
-        voegNaamToeAanGesoorteerdeLijst("Bader", mijnGesorteerdeLijst);
-        voegNaamToeAanGesoorteerdeLijst("Zack", mijnGesorteerdeLijst);
-        voegNaamToeAanGesoorteerdeLijst("Miranda", mijnGesorteerdeLijst);
+        voegNaamToeAanGesorteerdeLijst("Zacharias", mijnGesorteerdeLijst);
+        voegNaamToeAanGesorteerdeLijst("Henk", mijnGesorteerdeLijst);
+        voegNaamToeAanGesorteerdeLijst("Armin", mijnGesorteerdeLijst);
+        voegNaamToeAanGesorteerdeLijst("Bader", mijnGesorteerdeLijst);
+        voegNaamToeAanGesorteerdeLijst("Zack", mijnGesorteerdeLijst);
+        voegNaamToeAanGesorteerdeLijst("Miranda", mijnGesorteerdeLijst);
+
+        printLijst(mijnGesorteerdeLijst, NAAM_GESORTEERDE_NAMEN);
+
+        voegLijstToeAanGesorteerdeLijst(mijnGesorteerdeLijst,mijnExtraLijst);
 
         printLijst(mijnGesorteerdeLijst, NAAM_GESORTEERDE_NAMEN);
 
