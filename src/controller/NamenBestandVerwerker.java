@@ -65,16 +65,12 @@ public class NamenBestandVerwerker {
         boolean isIngevoerd = false;
 
         for (int i = NUL; i < lijst.size(); i++) {
-            if (lijst.get(i).compareTo(naam) > NUL) {
-                if (!isIngevoerd) {
-                    lijst.add(i, naam);
-                    isIngevoerd = true;
-                }
-            } else if (i == (lijst.size() - EEN)) {
-                if (!isIngevoerd) {
-                    lijst.add(i + EEN, naam);
-                    isIngevoerd = true;
-                }
+            if (lijst.get(i).compareTo(naam) > NUL && !isIngevoerd) {
+                lijst.add(i, naam);
+                isIngevoerd = true;
+            } else if ((i == (lijst.size() - EEN) && !isIngevoerd)) {
+                lijst.add(i + EEN, naam);
+                isIngevoerd = true;
             }
         }
     }
