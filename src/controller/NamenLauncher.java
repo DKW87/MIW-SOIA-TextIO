@@ -12,36 +12,26 @@ public class NamenLauncher {
         // variabelen
         final String LOCATIE_EXTRA_NAMEN = "resources/ExtraNamen.txt";
         final String LOCATIE_GESORTEERDE_NAMEN = "resources/GesorteerdeNamenOrigineel.txt";
+        final String NAAM_EXTRA_NAMEN = "extra namen lijst";
+        final String NAAM_GESORTEERDE_NAMEN = "gesorteerde namen lijst";
 
-        System.out.printf("In extra namen zitten %d namen. %n", telNamenBestand(LOCATIE_EXTRA_NAMEN));
-        System.out.printf("In gesorteerde namen zitten %d namen. %n%n", telNamenBestand(LOCATIE_GESORTEERDE_NAMEN));
+        System.out.printf("In %s zitten %d namen. %n", NAAM_EXTRA_NAMEN, telNamenBestand(LOCATIE_EXTRA_NAMEN));
+        System.out.printf("In %s zitten %d namen. %n%n",NAAM_GESORTEERDE_NAMEN, telNamenBestand(LOCATIE_GESORTEERDE_NAMEN));
 
         List<String> mijnExtraLijst = new ArrayList<>(leesNamenBestand(LOCATIE_EXTRA_NAMEN));
         List<String> mijnGesorteerdeLijst = new ArrayList<>(leesNamenBestand(LOCATIE_GESORTEERDE_NAMEN));
 
-        for (int i = 0; i < mijnExtraLijst.size(); i++) {
-            if (i == 0) {
-                System.out.print("De extra lijst bevat de volgende namen: ");
-            }
-            else if (i != mijnExtraLijst.size() - 1) {
-                System.out.printf("%s, ", mijnExtraLijst.get(i));
-            }
-            else {
-                System.out.printf("%s.%n", mijnExtraLijst.get(i));
-            }
-        }
+        printLijst(mijnExtraLijst, NAAM_EXTRA_NAMEN);
+        printLijst(mijnGesorteerdeLijst, NAAM_GESORTEERDE_NAMEN);
 
-        for (int i = 0; i < mijnGesorteerdeLijst.size(); i++) {
-            if (i == 0) {
-                System.out.print("De gesorteerde lijst bevat de volgende namen: ");
-            }
-            else if (i != mijnGesorteerdeLijst.size() - 1) {
-                System.out.printf("%s, ", mijnGesorteerdeLijst.get(i));
-            }
-            else {
-                System.out.printf("%s.%n", mijnGesorteerdeLijst.get(i));
-            }
-        }
+        voegNaamToeAanGesoorteerdeLijst("Zacharias", mijnGesorteerdeLijst);
+        voegNaamToeAanGesoorteerdeLijst("Henk", mijnGesorteerdeLijst);
+        voegNaamToeAanGesoorteerdeLijst("Armin", mijnGesorteerdeLijst);
+        voegNaamToeAanGesoorteerdeLijst("Bader", mijnGesorteerdeLijst);
+        voegNaamToeAanGesoorteerdeLijst("Zack", mijnGesorteerdeLijst);
+        voegNaamToeAanGesoorteerdeLijst("Miranda", mijnGesorteerdeLijst);
+
+        printLijst(mijnGesorteerdeLijst, NAAM_GESORTEERDE_NAMEN);
 
     } // main
 

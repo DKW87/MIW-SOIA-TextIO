@@ -8,11 +8,15 @@ import java.util.Scanner;
 
 public class NamenBestandVerwerker {
 
+    // attributen
+    private static final int NUL = 0;
+    private static final int EEN = 1;
+
     // static methoden
 
     public static int telNamenBestand(String bestandsnaam) {
         File namenBestand = new File(bestandsnaam);
-        int aantalRegels = 0;
+        int aantalRegels = NUL;
 
         try {
             Scanner invoer = new Scanner(namenBestand);
@@ -42,6 +46,37 @@ public class NamenBestandVerwerker {
         }
 
         return lijstNamen;
+    }
+
+    public static void printLijst(List<String> lijst, String naam) {
+
+        for (int i = NUL; i < lijst.size(); i++) {
+            if (i == NUL) {
+                System.out.printf("De %s bevat de volgende namen: %s, ", naam, lijst.get(i));
+            } else if (i != lijst.size() - EEN) {
+                System.out.printf("%s, ", lijst.get(i));
+            } else {
+                System.out.printf("%s.%n", lijst.get(i));
+            }
+        }
+    }
+
+    public static void voegNaamToeAanGesoorteerdeLijst(String naam, List<String> lijst) {
+        boolean isIngevoerd = false;
+
+        for (int i = NUL; i < lijst.size(); i++) {
+            if (lijst.get(i).compareTo(naam) > NUL) {
+                if (!isIngevoerd) {
+                    lijst.add(i, naam);
+                    isIngevoerd = true;
+                }
+            } else if (i == (lijst.size() - EEN)) {
+                if (!isIngevoerd) {
+                    lijst.add(i + EEN, naam);
+                    isIngevoerd = true;
+                }
+            }
+        }
     }
 
 } // klasse
