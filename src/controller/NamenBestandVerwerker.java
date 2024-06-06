@@ -2,6 +2,7 @@ package controller;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -11,7 +12,6 @@ public class NamenBestandVerwerker {
     // attributen
     private static final int NUL = 0;
     private static final int EEN = 1;
-    private static final int RESULTATEN_PER_REGEL = 8;
 
     // static methoden
 
@@ -49,6 +49,8 @@ public class NamenBestandVerwerker {
     }
 
     public static void printLijst(List<String> lijst, String naam) {
+        final int RESULTATEN_PER_REGEL = 8;
+
         for (int i = NUL; i < lijst.size(); i++) {
             if (i == NUL) {
                 System.out.printf("De %s bevat de volgende namen: %s, ", naam, lijst.get(i));
@@ -80,6 +82,20 @@ public class NamenBestandVerwerker {
     public static void voegLijstToeAanGesorteerdeLijst(List<String> hoofdLijst, List<String> inTeVoegenLijst) {
         for (String string : inTeVoegenLijst) {
             voegNaamToeAanGesorteerdeLijst(string, hoofdLijst);
+        }
+    }
+
+    public static void maakBestandVanLijst (List<String> lijst, String bestandsnaam) {
+        File uitvoerBestand = new File(bestandsnaam);
+        try {
+            PrintWriter printWriter = new PrintWriter(uitvoerBestand);
+            for (String string : lijst) {
+                printWriter.println(string);
+            }
+            printWriter.close();
+            System.out.printf("Lijst succesvol naar '%s' geschreven. %n", bestandsnaam);
+        } catch (FileNotFoundException nietGemaakt) {
+            System.out.println("Het bestand kon niet worden aangemaakt.");
         }
     }
 
